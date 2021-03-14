@@ -4,12 +4,12 @@
     name: nginx
     state: restarted
 
-- name: Restart MySQL
+- name: Restart MariaDB
   service:
-    name: mysql
+    name: mariadb
     state: restarted
 
-- name: Restart PHP5-FPM
+- name: Restart PHP7-FPM
   service:
     name: php-fpm
     state: restarted

@@ -19,7 +19,7 @@
     owner: root
     group: root
   with_items:
-    - { src: 'www.conf.j2', dest: '/etc/php/7.1/fpm/pool.d/www.conf' }
-    - { src: 'php.ini.j2', dest: '/etc/php/7.1/fpm/php.ini' }
+    - { src: 'www.conf.j2', dest: '/etc/php/7.4/fpm/pool.d/www.conf' }
+    - { src: 'php.ini.j2', dest: '/etc/php/7.4/fpm/php.ini' }
   notify:
-    - Restart PHP5-FPM
+    - Restart PHP7-FPM

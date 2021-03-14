@@ -1,5 +1,9 @@
+[all:vars]
+ansible_connection=ssh
+ansible_user=root
+
 [local]
 localhost
 
 [server]
-192.168.0.109 ansible_ssh_user=ubuntu
+157.245.108.100

@@ -1,12 +1,33 @@
 ---
-- name: Install the MySQL packages
+- name: Install Utility software
+  apt: name={{item}} state=latest update_cache=yes
+  with_items:
+    - software-properties-common
+
+- name: Add apt key
+  command: apt-key adv --fetch-keys 'https://mariadb.org/mariadb_release_signing_key.asc'
+
+- name: Add MariaDB Repo
+  apt_repository:
+    filename: MariaDB-10.2
+    repo: deb [arch=amd64,arm64,ppc64el] http://sgp1.mirrors.digitalocean.com/mariadb/repo/10.5/ubuntu focal main
+    state: present
+
+- name: "Installing python apt dependencies"
+  apt:
+    name: "{{item}}"
+  with_items:
+    - python3-pip
+    - python3-dev 
+
+- name: Install the MariaDB packages
   apt:
     name: "{{ item }}"
-    state: installed
+    state: present
     update_cache: yes
   with_items: "{{ ubuntu_mysql_pkgs }}"
 
-- name: Update MySQL root password for all root accounts 
+- name: Update MariaDB root password for all root accounts 
   mysql_user:
     name: root
     host: "{{ item }}"
@@ -29,7 +50,7 @@
     - { src: 'my.cnf.j2', dest: '/etc/mysql/my.cnf' }
     - { src: 'root.cnf.j2', dest: '~/.my.cnf', mode: '600' }
   notify:
-    - Restart MySQL
+    - Restart MariaDB
 
 - name: Ensure Anonymous user(s) are not in the database
   mysql_user:
@@ -45,4 +66,4 @@
     name: test
     state: absent
   notify:
-    - Restart MySQL 
+    - Restart MariaDB 
