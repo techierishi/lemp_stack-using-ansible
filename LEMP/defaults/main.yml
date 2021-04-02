@@ -3,7 +3,9 @@ mysql_port: 3306 #Default is 3306, please change it if you are using non-standar
 mysql_bind_address: "127.0.0.1" #Change it to "0.0.0.0",if you want to listen everywhere
 mysql_root_pass: otgi$AsHmu7dTe #MySQL Root Password
 connections: 1024 #Nginx Connection
-server_name: 167.71.230.194 #Nginx server_name, change it to your website e.g: rbgeek.com
+server_name: sreebiswakarmainds.com #Nginx server_name, change it to your website e.g: rbgeek.com
+drupal_url: "https://ftp.drupal.org/files/projects/drupal-8.9.13.tar.gz"
+drupal_tar: "/var/www/html/drupal-8.9.13.tar.gz"
 
 ubuntu_mysql_pkgs:
   - mariadb-client
@@ -13,19 +15,25 @@ ubuntu_mysql_pkgs:
   - libmysqlclient-dev
 
 ubuntu_php_pkgs:
-  - php-fpm
-  - php-mysql
+  - php7.4
+  - unzip
+  - curl
+  - php7.4-fpm
+  - php7.4-mysql
   - php7.4-gd
   - php7.4-dom
+  - php7.4-cli
+  - php-xml
+  - php-gd
+  - php-curl
+  - php7.4-bcmath
+  - php7.4-mbstring
   # - php-cgi
-  # - php-cli
-  # - php-curl
   # - php-json
   # - php-odbc
   # - php-tidy
   # - php-common
   # - php-xmlrpc
-  # - php-gd
   # - php-pear
   # - php-dev
   # - php-imap

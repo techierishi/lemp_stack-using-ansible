@@ -6,4 +6,4 @@ ansible_user=root
 localhost
 
 [server]
-157.245.108.100
+64.225.87.71

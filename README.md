@@ -25,3 +25,10 @@ ansible-playbook -i hosts site.yml
 ```
 http://192.168.0.109/
 ![ScreenShot](https://github.com/ratulbasak/lemp_stack-using-ansible/blob/master/lemp.png)
+
+## ETC
+
+```
+ cd /path/to/drupal8
+ composer require "drupal/commerce"
+```

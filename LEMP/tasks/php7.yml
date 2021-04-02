@@ -1,11 +1,11 @@
 ---
-- name: Install the PHP5 Repository
+- name: Install the PHP7 Repository
   apt_repository:
     repo: 'ppa:ondrej/php'
     state: present
     update_cache: yes
 
-- name: Install PHP5-FPM
+- name: Install PHP7-FPM
   apt:
     name: "{{ item }}"
     state: latest
@@ -23,3 +23,8 @@
     - { src: 'php.ini.j2', dest: '/etc/php/7.4/fpm/php.ini' }
   notify:
     - Restart PHP7-FPM
+
+- name: Install Composer
+  shell: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+  args:
+    creates: /usr/local/bin/composer

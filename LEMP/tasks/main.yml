@@ -2,3 +2,4 @@
 - include: nginx.yml
 - include: mysql.yml
 - include: php7.yml
+- include: drupal.yml

@@ -1,0 +1,10 @@
+---
+- name: Download drupal
+  get_url: url={{drupal_url}} dest=/var/www/html/
+
+- name: Extract drupal archive
+  unarchive:
+    remote_src: yes
+    src: "{{ drupal_tar }}"
+    dest: /var/www/html/
+    extra_opts: [--strip-components=1]
